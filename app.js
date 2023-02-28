@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const morgan = require('morgan');
 const helmet = require('helmet');
+const compression = require('compression');
 
 const teacherRouter = require('./routes/teacherRoutes');
 const userRouter = require('./routes/userRoutes');
@@ -53,6 +54,8 @@ app.use(
     },
   })
 );
+
+app.use(compression());
 
 // http
 //

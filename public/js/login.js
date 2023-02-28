@@ -7,7 +7,7 @@ export const login = async (email, password) => {
   try {
     const result = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:3000/api/v1/users/login',
+      url: '/api/v1/users/login', // website and API are hosted on same server
       data: {
         email,
         password,
@@ -27,7 +27,7 @@ export const login = async (email, password) => {
 // LOG OUT
 export const logout = async () => {
   try {
-    const result = await axios('http://127.0.0.1:3000/api/v1/users/logout');
+    const result = await axios('/api/v1/users/logout');
     if (result.data.status === 'success') {
       window.location.assign('/');
     }
@@ -41,7 +41,7 @@ export const signup = async (fields) => {
   try {
     const result = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:3000/api/v1/users/signup',
+      url: '/api/v1/users/signup',
       data: {
         name: fields.name,
         email: fields.email,

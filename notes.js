@@ -2,6 +2,10 @@
  * Avatar Project
  */
 //  DATABASE2=mongodb+srv://sarah:<PASSWORD>@cluster0.d6hnrcu.mongodb.net/classbend
+//
+// git add -A
+// git commit -m "..."
+// git push origin master
 /**
  * 1) STARTING
  *

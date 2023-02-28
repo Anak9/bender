@@ -35,7 +35,6 @@ if (signupForm) {
   const body = document.querySelector('body');
   document.querySelector('.bending').addEventListener('click', (e) => {
     if (e.target.value) {
-      console.log(e.target.value);
       body.className = e.target.value;
     }
   });

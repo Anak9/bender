@@ -10,8 +10,6 @@ export const initEvents = (settingsForm, passwordForm) => {
     formData.append('email', document.getElementById('email').value);
     formData.append('photo', document.getElementById('photo').files[0]);
 
-    console.log(formData);
-
     await changeUserSettings(formData);
   });
 

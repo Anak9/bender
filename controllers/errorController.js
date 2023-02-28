@@ -24,6 +24,7 @@ const createduplicateKeyErrorDB = (error) => {
 };
 
 const sendErrorProd = (error, req, res) => {
+  console.log('ERROR ', error);
   // request to API
   if (req.originalUrl.startsWith('/api')) {
     // OPERATIONAL error
@@ -45,8 +46,6 @@ const sendErrorProd = (error, req, res) => {
 
   // OPERATIONAL error
   if (error.isOperational) {
-    console.error('ERROR ', error);
-
     return res.status(error.statusCode).render('error', {
       title: 'Something went wrong',
       message: error.message,
@@ -61,7 +60,7 @@ const sendErrorProd = (error, req, res) => {
 };
 
 const sendErrorDev = (error, req, res) => {
-  console.error('ERROR ', error);
+  console.log('ERROR ', error);
   // request to API
   if (req.originalUrl.startsWith('/api')) {
     return res.status(error.statusCode).json({
