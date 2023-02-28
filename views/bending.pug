@@ -1,0 +1,56 @@
+extends base
+
+include _ratingStars
+
+block content 
+    main
+        .classes-cards-container.index-container(class=`${bending}`)
+      
+            .index-card.classes-types
+                span Filters
+                div
+                ul
+                    a(href=`/bending/${bending}`): li 
+                        span All classes
+                            
+                    a(href=`/bending/${bending}?special=true`): li
+                        span Special
+                        span.material-symbols-outlined= icons[bending][1]
+
+                    a(href=`/bending/${bending}?special=false`): li
+                        span Normal
+                        span.material-symbols-outlined= icons[bending][0]
+                
+            .teachers-cards
+                each teacher in teachers
+                
+                    .class-card.index-card
+                        div
+                            img(src=`../img/teachers/${teacher.photo}` alt=`Photo of ${teacher.name}`)
+
+                        .class-card-presentation
+                            h6= teacher.name
+
+                            span 
+                                span= `${teacher.type.charAt(0).toUpperCase() + teacher.type.slice(1)} bending teacher`
+                                span.material-symbols-outlined= (teacher.special ? icons[teacher.bending][1] : icons[teacher.bending][0]) 
+                                                
+                            p= teacher.presentation
+
+                        .class-card-info
+                            h6= `$${teacher.price}/h`
+                            .rating
+                                .rating-stars
+                                    +stars(teacher.ratingsAverage)
+                            
+                                span.rating-average= `${teacher.ratingsAverage.toString().padEnd(3, '.0')}`
+
+                            a(href=`/teacher/${teacher.slug}`) 
+                                button.btn Book a class
+    
+    //- script.
+    //-     - document.querySelectorAll('.class-card').forEach( card => {
+    //-         card.addEventListener('click', (e) => {
+    //-              location.assign(`/teacher/${card.id}`)});
+    //-         }
+    //-     );

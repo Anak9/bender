@@ -1,0 +1,25 @@
+header.header
+    div.header-img-div
+        a(href='/'): img(src='../img/logo-black.png' alt='bender logo' href='/')
+    
+    div.search-bar
+        form
+            input(type='text' placeholder='search') 
+            button
+                span.material-symbols-outlined search 
+    
+    nav.nav-user
+        a(href="#"): button.api-link API
+
+        if user 
+
+            a(href='#'): button.header-btn.dark-header-btn My classes
+            
+            a(href='/me'): img(src=`/img/users/${user.photo}` alt=`photo of ${user.name}`)
+
+            a#logout(href='#') Log out
+        
+        else
+            a(href='/login'): button.header-btn Log in
+            
+            a(href='/signup'): button.header-btn.dark-header-btn Sign up

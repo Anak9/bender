@@ -1,0 +1,93 @@
+extends base
+
+block header
+
+block content
+  body.neutral
+    .signup-login-container
+      a(href='/')
+        .logo
+          img(src='/img/logo-black.png' alt='bender symbol logo')
+          h5 Bender
+      
+      form#signup-form
+       .signup-login-form-container.form-container 
+          h1 Create account
+          div
+            label Name 
+            br 
+            input.form-container-input#name(type='text' name='name' placeholder='Name and Lastname')
+          
+
+          div
+            label Email 
+            br 
+            input.form-container-input#email(type='email' name='email')
+          
+
+          .bending#bending
+            label Bending 
+
+            label.air
+              input.form-container-input(type='radio' name='bending' value='air')
+              img(src='/img/air.png') 
+             
+            label.water
+              input.form-container-input(type='radio' name='bending' value='water')
+              img(src='/img/water.png') 
+            
+            label.earth
+              input.form-container-input(type='radio' name='bending' value='earth')
+              img(src='/img/earth.png') 
+            
+            label.fire
+              input.form-container-input(type='radio' name='bending' value='fire')
+              img(src='/img/fire.png') 
+            
+
+          div 
+            label Password
+            input.form-container-input#password(type='password' name='password' placeholder='At least 6 characters') 
+          div 
+            label Confirm password
+            input.form-container-input#passwordConfirm(type='password' name='passwordConfirm')
+
+          button.btn(type='submit') Create
+
+          h6 Already have an account? 
+            a(href='/login') Login 
+    
+    //- script.
+    //-   document.querySelector('.header').style = 'display: none';
+
+    //-   const body = document.querySelector('body');
+    //-   document.querySelector('.bending').addEventListener('click', (e) =>  {
+    //-     if (e.target.value) {
+    //-       console.log(e.target.value);
+    //-       body.className = e.target.value;
+    //-     }
+    //-   });
+
+    //-   var invalid = false;
+    //-   // did not name type name
+    //-   if (invalid) {
+    //-     document.querySelector('input[type="text"]').className = 'invalid';
+    //-   }
+
+    //-   // did not select bending
+    //-   if (invalid) {
+    //-     document.querySelector('.bending').classList.add('invalid');
+    //-   }
+
+    //-   document.querySelector('.btn').addEventListener('click', (e) =>  {
+    //-     var bending = document.querySelector('.bending');
+
+    //-     bending.classList.add('invalid');
+
+    //-     message = 'Select your bending';
+    //-     var label = document.createElement('label');
+    //-     label.innerHTML = message;
+    //-     label.className = 'invalid-label';
+    //-     document.querySelector('.form-container').insertBefore(label, bending);
+    //-   });
+  

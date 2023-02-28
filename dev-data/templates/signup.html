@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sign in</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .neutral {
+        --primary-color: #201a1a;
+        --secondary-color: #222121;
+        --button-color: #000000;
+        --button-border-text: #ffffff;
+        --light-background-color: #fff;
+      }
+
+      .fire {
+        --primary-color: #de4a39;
+        --secondary-color: #a5302a; /*bom*/
+        --button-color: #d51515;
+        --button-border-text: #ff7e5a;
+        --light-background-color: #fff0f259;
+        --really-dark: #812123;
+        --other-red: #e62143;
+      }
+
+      .air {
+        --primary-color: #ff7034;
+        --secondary-color: #ca5c32;
+        --button-color: #ff7034;
+        --button-border-text: #ff9250;
+        --light-background-color: #f9ee7059;
+        --other-yellow: #ffd669;
+      }
+
+      .earth {
+        --primary-color: #114523;
+        --secondary-color: #0e6528;
+        --button-color: #28902f;
+        --button-border-text: #74cc32;
+        --light-background-color: #d2ff3d26;
+      }
+
+      .water {
+        --primary-color: #115c70;
+        --secondary-color: #14728d;
+        --button-color: #17a3a9;
+        --button-border-text: #7aa7c7;
+        --light-background-color: #edf2f3;
+
+        --other-blue: #e1ecf4;
+      }
+
+      body {
+        background-color: var(--light-background-color);
+      }
+
+      .container {
+        font-family: 'Open Sans', sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+      }
+
+      .logo img {
+        width: 50px;
+        height: fit-content;
+      }
+
+      .logo h5 {
+        font-size: x-large;
+        margin: 10px;
+      }
+
+      .form-container {
+        background-color: #fff;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+
+        border: 1px #ddd solid;
+        padding: 18px;
+        width: 350px;
+        gap: 15px;
+      }
+
+      label {
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      h1 {
+        font-weight: 400;
+        font-size: 30px;
+        margin-bottom: 7px;
+        margin-top: 0;
+      }
+      input {
+        width: 95%;
+        height: 18px;
+        padding: 6px;
+
+        border: 1px solid #a6a6a6;
+        border-top-color: #949494;
+        border-radius: 3px;
+        box-shadow: 0 1px 0 rgb(255 255 255 / 50%),
+          0 1px 0 rgb(0 0 0 / 7%) inset;
+        outline: 0;
+      }
+
+      input:focus {
+        border-color: var(--secondary-color);
+        box-shadow: 2px 2px 2px var(--secondary-color);
+        /* box-shadow: 10px 10px grey inset; */
+      }
+
+      input[type='radio'] {
+        width: 10px;
+        box-shadow: none;
+        opacity: 0;
+      }
+      .bending input:checked + img {
+        border: 1px solid var(--secondary-color);
+        box-shadow: 1px 1px 1px 1px var(--secondary-color);
+      }
+      .bending {
+        height: 50px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+      }
+      .bending label:first-of-type {
+        width: 267px;
+        position: relative;
+        right: 21px;
+      }
+      .bending img {
+        /* flex: 1 1 20px; */
+        position: relative;
+        top: 6px;
+        width: 30px;
+
+        border-radius: 10px;
+        box-shadow: 1px 1px 1px 1px var(--button-color) inset;
+      }
+      .bending img:hover,
+      .bending img:active,
+      .bending img:focus {
+        border: 1px solid var(--secondary-color);
+        box-shadow: 1px 1px 1px 1px var(--secondary-color);
+      }
+
+      .btn {
+        box-sizing: border-box;
+        border-radius: 8px;
+        background-color: var(--button-color);
+        border: 1px solid var(--button-border-text);
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        height: 35px;
+      }
+
+      .btn:hover,
+      .btn:focus {
+        cursor: pointer;
+        background-color: var(--secondary-color);
+      }
+
+      .btn:active {
+        background-color: var(--primary-color);
+      }
+
+      h6 {
+        margin-top: 15px;
+        margin-bottom: 10px;
+      }
+
+      .invalid {
+        border: 1px solid #f11919;
+        box-shadow: #f10c0c 0px 1px 7px -1px, #ab080800 0px 0px 3px 1px;
+        border-radius: 6px;
+        outline: 0;
+        margin-top: 3px;
+        padding-bottom: 15px;
+        padding-top: 4px;
+        padding-left: 7px;
+      }
+
+      .invalid:focus {
+        border: 1px solid #f11919;
+        box-shadow: #f10c0c 0px 1px 7px -1px, #ab080800 0px 0px 3px 1px;
+        outline: 0;
+        margin-top: 3px;
+      }
+
+      .invalid-label {
+        color: #f3002de8;
+        position: relative;
+        bottom: -11px;
+      }
+    </style>
+  </head>
+  <body class="neutral">
+    <div class="container">
+      <div class="logo">
+        <img src="../img/logo-black.png" />
+        <h5>Projeto</h5>
+      </div>
+      <form>
+        <div class="form-container">
+          <h1>Create account</h1>
+          <div>
+            <label>Name</label>
+            <br />
+            <input class="" type="text" placeholder="Name and Lastname" />
+          </div>
+
+          <div>
+            <label>Email</label>
+            <br />
+            <input type="email" />
+          </div>
+
+          <div class="bending">
+            <label>Bending</label>
+
+            <label class="air">
+              <input type="radio" name="bending" value="air" />
+              <img src="../../public/img/fire.png" />
+            </label>
+            <label class="water">
+              <input type="radio" name="bending" value="water" />
+              <img src="../../public/img/fire.png" />
+            </label>
+            <label class="earth">
+              <input type="radio" name="bending" value="earth" />
+              <img src="../../public/img/fire.png" />
+            </label>
+            <label class="fire">
+              <input type="radio" name="bending" value="fire" />
+              <img src="../../public/img/fire.png" />
+            </label>
+          </div>
+
+          <div>
+            <label>Password</label>
+            <input type="password" placeholder="At least 6 characters" />
+          </div>
+          <div>
+            <label>Confirm password</label>
+            <input type="password" />
+          </div>
+
+          <button class="btn" type="submit">Create</button>
+
+          <h6>Already have an account? <a href="#">Login</a></h6>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const body = document.querySelector('body');
+      document.querySelector('.bending').addEventListener('click', (e) => {
+        if (e.target.value) {
+          console.log(e.target.value);
+          body.className = e.target.value;
+        }
+      });
+
+      var invalid = false;
+      // did not name type name
+      if (invalid) {
+        document.querySelector('input[type="text"]').className = 'invalid';
+      }
+
+      // did not select bending
+      if (invalid) {
+        document.querySelector('.bending').classList.add('invalid');
+      }
+
+      document.querySelector('.btn').addEventListener('click', (e) => {
+        var bending = document.querySelector('.bending');
+
+        bending.classList.add('invalid');
+
+        message = 'Select your bending';
+        var label = document.createElement('label');
+        label.innerHTML = message;
+        label.className = 'invalid-label';
+        document.querySelector('.form-container').insertBefore(label, bending);
+      });
+    </script>
+  </body>
+</html>

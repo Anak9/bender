@@ -1,0 +1,12 @@
+mixin reviewCard(review)
+    .review-card
+        .review-card-img-div
+            img(src=`/img/users/${review.author.photo}` alt=`photo of ${review.author.name}`)
+        
+        .review-card-text
+            h6= review.author.name
+            p= review.review
+        
+        .rating
+            .rating-stars
+                +stars(review.rating)

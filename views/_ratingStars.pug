@@ -1,0 +1,8 @@
+mixin stars(rating)
+  each star in [1, 2, 3, 4, 5]
+    if (rating >= star)
+      span.material-symbols-outlined.star-fill star 
+    else if (star -  rating < 1)
+      span.material-symbols-outlined star_half
+    else 
+      span.material-symbols-outlined star

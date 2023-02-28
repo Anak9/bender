@@ -1,0 +1,134 @@
+extends base
+
+include _ratingStars
+include _reviewCard
+
+mixin modality(modality)
+  if (modality === 'online and onsite')
+    span Both #[strong Online] and #[strong Onsite] classes
+
+  else if (modality === 'online')
+    span Remote #[strong Online] classes only
+
+  else
+    span Presential #[strong Onsite] classes only
+
+block content 
+
+  body(class=`${teacher.bending}`)
+    
+    main
+
+      .info-container
+
+        .profile
+          .img-div
+            img(src=`/img/teachers/${teacher.photo}` alt=`photo of ${teacher.name}`)
+         
+          .presentation
+            div
+              h2= teacher.name
+              label
+                img(src=`/img/${teacher.bending}.png` alt=`${teacher.bending} symbol`)
+            br
+            
+          .reviews-rating
+            .rating
+              .rating-stars
+                +stars(teacher.ratingsAverage)
+              span.rating-average= teacher.ratingsAverage
+            h5 #{teacher.ratingsQuantity} reviews
+         
+
+        .description
+          p= teacher.presentation
+
+          .divider
+
+          .summary
+
+            .modalities
+              
+              h6 MODALITIES
+              div
+                span.material-symbols-outlined location_away
+                - if (teacher.modality === 'online') 
+                  span #{teacher.name.split(' ')[0]} is not available for presential classes.
+                - else 
+                  span #{teacher.name.split(' ')[0]} is available for presential classes on the adress below.
+
+              div
+                span.material-symbols-outlined location_on
+                span= teacher.classLocation.address
+
+              div
+                span.material-symbols-outlined videocam
+            
+                span Available for online classes. But make sure you have an #[strong(style='color: #d51515') appropriate space] required for the activities.
+
+
+              - if (teacher.groupClasses)
+                div
+                  span.material-symbols-outlined groups
+                  span Private classes or in groups of up to #{teacher.groupSize} students
+
+            .aides
+              h6 TEACHER'S AIDES
+              
+              each aide in teacher.aides
+                .aide
+                  .img-div
+                    img(src=`/img/users/${aide.photo}` alt=`photo of ${aide.name}`)
+                  h5= aide.name  
+              
+          
+        
+
+          .divider
+          
+          h6 DESCRIPTION 
+
+          - const paragraphs = teacher.description.split('\n')
+          each p in paragraphs
+            p= paragraphs[0] 
+            br
+       
+          .divider
+
+        .reviews
+          h6 REVIEWS
+
+          each review in teacher.reviews 
+            +reviewCard(review)
+            
+               
+          button.btn More reviews
+       
+     
+      .left-container
+        .buy-container
+          span Try 20 minutes for free
+          span $#{teacher.price},00
+ 
+          button.btn book a class
+          
+          div or
+          button.btn.font-color-secondary send a message
+       
+        .brief-container
+          div
+            span.material-symbols-outlined= (teacher.special) ? icons[teacher.bending][1] : icons[teacher.bending][0] 
+            span Learn #[strong #{teacher.bending}] bending 
+         
+          div
+            span.material-symbols-outlined videocam 
+            +modality(teacher.modality)
+
+          div
+            span.material-symbols-outlined group_add 
+            
+            - if (teacher.groupClasses)
+              span #[strong Private] classes or in #[strong groups] of up to #{teacher.groupSize} students
+            - else
+              span  #[strong Private] classes only
+

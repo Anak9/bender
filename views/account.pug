@@ -1,0 +1,100 @@
+extends base
+
+block content
+
+  main.account
+    .menu
+      .image-change-div
+        .img-div
+          img(src=`/img/users/${user.photo}` alt=`photo of ${user.name}`)
+
+        label#photo-label(for='photo')
+          label(for='photo').span.material-symbols-outlined Edit
+          label(for='photo') Edit
+      
+      ul.standard-settings
+        li.active
+          a(href='#')
+            span.material-symbols-outlined settings
+            span SETTINGS
+          
+        li
+          a(href='#')
+            span.material-symbols-outlined sports_martial_arts
+            span MY TEACHERS
+      
+        li
+          a(href='#')
+            span.material-symbols-outlined comment 
+            span MY REVIEWS
+    
+        li 
+          a(href='#')
+            span.material-symbols-outlined credit_card 
+            span PAYMENTS
+
+
+      if (user.role === 'admin')
+        h5 ADMIN
+
+        ul.admin-settings
+          li.active
+            a(href='#')
+              span.material-symbols-outlined sports_martial_arts
+              
+              span MANAGE TEACHERS
+                    
+          li
+            a(href='#')
+              span.material-symbols-outlined group 
+              span MANAGE USERS
+                    
+          li
+            a(href='#')
+              span.material-symbols-outlined comment 
+              span MANAGE REVIEWS
+                    
+          li
+            a(href='#')
+              span.material-symbols-outlined credit_card 
+              span MANAGE PAYMENTS
+
+    div.account-update-container
+      form.form-settings#user-settings-form
+        .form-container
+          h6 YOUR ACCOUNT SETTINGS
+
+          div
+            label Name
+            input.form-container-input#name(type='text' value=`${user.name}` name='name')
+        
+          div 
+            label Email Address
+            input.form-container-input#email(type='email' value=`${user.email}` name='email')
+
+          input#photo(type='file' name='photo' accept='image/*')
+      
+          button(type='submit') Save changes
+  
+      form.form-settings#user-password-form
+        .form-container
+          h6 PASSWORD CHANGE 
+          div 
+            label Current Password 
+            input.form-container-input#password(type='password'  placeholder='******' name='password')
+            
+          div
+            label New Password
+            input.form-container-input#new-password(type='password' placeholder='******' name='newPassword')
+        
+          div
+            label Confirm Password
+            input.form-container-input#passwordConfirm(type='password' placeholder='******' name='passwordConfirm')
+  
+          button(type='submit') Save Password
+    
+    .edit-image-card(style='display: none')
+      button#close-edit-photo.material-symbols-outlined close
+      div
+        img#edit-photo(src='')
+      button.btn(type='submit' form='user-settings-form') Save

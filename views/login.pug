@@ -1,0 +1,32 @@
+extends base
+
+block header
+
+block content 
+
+  body.neutral 
+    .signup-login-container
+      a(href='/')
+        .logo
+          img(src='/img/logo-black.png' alt='bender symbol logo')
+          h5 Bender
+      
+      form#login-form
+        .signup-login-form-container.form-container 
+          h1 Login
+
+          div
+            label Email 
+            br  
+            input.form-container-input#email(type='email' name='email')
+
+          div
+            label Password
+            input.form-container-input#password(type='password' name='password')        
+
+          button.btn Login
+
+          h6 or <a href='#'> Forgot Password</a> 
+
+          h6 Don't have an account? 
+            a(href='/signup') Sign up     
