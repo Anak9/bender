@@ -110,7 +110,10 @@ block content
           span Try 20 minutes for free
           span $#{teacher.price},00
  
-          button.btn book a class
+          if user
+            a(href=`/booking/${teacher.id}`): button.btn Book a class
+          else
+            a(href=`/login`): button.btn Book a class
           
           div or
           button.btn.font-color-secondary send a message

@@ -1,6 +1,7 @@
 /* eslint-disable */
 // import '@babel/polyfill';
-import { initEvents } from './accoun';
+import { initAccountEvents } from './account';
+import { initBookingsEvents } from './bookings';
 import { login, logout, signup } from './login';
 
 // get DOM ELEMENTS
@@ -9,6 +10,7 @@ const signupForm = document.getElementById('signup-form');
 const logoutBtn = document.getElementById('logout');
 const settingsForm = document.getElementById('user-settings-form');
 const passwordForm = document.getElementById('user-password-form');
+const bookBtn = document.getElementById('booking__btn');
 
 // DELEGATE TASKS
 
@@ -31,7 +33,7 @@ if (signupForm) {
     signup(fields);
   });
 
-  // add styles //////////// change?
+  // add styles
   const body = document.querySelector('body');
   document.querySelector('.bending').addEventListener('click', (e) => {
     if (e.target.value) {
@@ -49,5 +51,10 @@ if (logoutBtn) {
 
 // UPDATE USER DATA
 if (settingsForm) {
-  initEvents(settingsForm, passwordForm);
+  initAccountEvents(settingsForm, passwordForm);
+}
+
+// BOOKING
+if (bookBtn) {
+  initBookingsEvents();
 }

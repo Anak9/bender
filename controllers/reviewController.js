@@ -9,7 +9,6 @@ exports.getReview = factory.getOne(Review, {
   select: 'name photo modality price ratingsAverage ratingsQuantity',
 });
 
-////// filter?
 exports.getAllReviews = factory.getAll(Review);
 
 exports.setUserAndTeacherId = (req, res, next) => {

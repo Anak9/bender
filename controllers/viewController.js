@@ -1,6 +1,7 @@
 const Teacher = require('../models/teacherModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/AppError');
+const getMonthDays = require('../utils/calendar');
 
 // icons available in all pug templates
 exports.provideIcons = (req, res, next) => {
@@ -89,5 +90,28 @@ exports.getTeacherPage = catchAsync(async (req, res, next) => {
   res.status(200).render('teacher', {
     title: `${teacher.name}`,
     teacher,
+  });
+});
+
+// BOOKING
+exports.getBooking = catchAsync(async (req, res, next) => {
+  const today = new Date();
+  const year = today.getFullYear();
+  const days = getMonthDays(year, today.getMonth());
+
+  const name = 'NAME sarag';
+
+  const teacher = await Teacher.findById(req.params.teacherId);
+
+  res.status(200).render('booking', {
+    title: 'Booking',
+    bending: teacher.bending,
+    price: teacher.price,
+    teacherId: teacher.id,
+    timetable: teacher.timetable,
+    days,
+    month: today.toLocaleString('en-US', { month: 'long' }),
+    year,
+    name,
   });
 });

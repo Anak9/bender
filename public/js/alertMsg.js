@@ -19,7 +19,7 @@ const removeAlerts = () => {
 };
 
 // // create error HTML CARD ELEMENT
-const createErrorCard = (message, container) => {
+export const createErrorCard = (message, container) => {
   const card = document.createElement('div');
 
   card.classList = 'invalid-form-entry';

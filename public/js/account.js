@@ -1,6 +1,6 @@
 import { changeUserSettings, changeUserPassword } from './userSettings';
 
-export const initEvents = (settingsForm, passwordForm) => {
+export const initAccountEvents = (settingsForm, passwordForm) => {
   // CHANGE NAME and EMAIL and PHOTO
   settingsForm.addEventListener('submit', async (e) => {
     e.preventDefault();

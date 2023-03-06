@@ -3,12 +3,11 @@ extends base
 block header
 
 block content
-  body.neutral
+  main.neutral.login-signup-main 
     .signup-login-container
       a(href='/')
         .logo
-          img(src='/img/logo-black.png' alt='bender symbol logo')
-          h5 Bender
+          img(src='/img/logo.png' alt='bender symbol logo')
       
       form#signup-form
        .signup-login-form-container.form-container 
@@ -28,19 +27,19 @@ block content
           .bending#bending
             label Bending 
 
-            label.air
+            label.air.choose__bending
               input.form-container-input(type='radio' name='bending' value='air')
               img(src='/img/air.png') 
              
-            label.water
+            label.water.choose__bending
               input.form-container-input(type='radio' name='bending' value='water')
               img(src='/img/water.png') 
             
-            label.earth
+            label.earth.choose__bending
               input.form-container-input(type='radio' name='bending' value='earth')
               img(src='/img/earth.png') 
             
-            label.fire
+            label.fire.choose__bending
               input.form-container-input(type='radio' name='bending' value='fire')
               img(src='/img/fire.png') 
             

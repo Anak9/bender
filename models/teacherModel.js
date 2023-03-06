@@ -89,6 +89,11 @@ const teacherSchema = new mongoose.Schema(
       },
     ],
 
+    timetable: {
+      type: [String],
+      required: [true, 'Please inform the timetable for classes'],
+    },
+
     // "reviews": {}, // virtual
 
     groupClasses: Boolean,

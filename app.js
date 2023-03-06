@@ -9,6 +9,7 @@ const teacherRouter = require('./routes/teacherRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const viewRouter = require('./routes/viewRoutes');
+const bookingRouter = require('./routes/bookingRoutes');
 
 const ErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/AppError');
@@ -46,7 +47,8 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       // defaultSrc: ['*', "'unsafe-inline'"],
-      // "script-src": ['*', "'unsafe-inline'"],
+      'script-src': ['*', "'unsafe-inline'", 'https://js.stripe.com/v3/'],
+      'frame-src': ["'self'", 'https://js.stripe.com/'],
       // "style-src": ['*', "'unsafe-inline'"],
       'font-src': safeFonts,
       'img-src': ['*', "'unsafe-inline'", 'blob:'],
@@ -62,9 +64,10 @@ app.use(compression());
 
 // routes mouting middleware
 app.use('/', viewRouter);
-app.use('/api/v1/teachers', teacherRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
+app.use('/api/v1/teachers', teacherRouter);
+app.use('/api/v1/bookings', bookingRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Could not find ${req.originalUrl} in our server`, 404));

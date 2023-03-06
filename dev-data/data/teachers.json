@@ -20,7 +20,8 @@
       "type": "Point",
       "coordinates": [91.118622, 29.655643],
       "address": "35 Beijing Middle Rd, Lhasa, Tibet, China, 850000"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c2e7d1ed0d8713b7abaf78",
@@ -43,7 +44,8 @@
       "type": "Point",
       "coordinates": [60.60888782688189, 56.84448650039789],
       "address": "Ulitsa Tsarskaya, 10, Yekaterinburg, Sverdlovsk Oblast, Rússia, 620075"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c5e",
@@ -66,7 +68,8 @@
       "type": "Point",
       "coordinates": [-54.58849174603699, -25.546179743768736],
       "address": "Praça Getulio Vargas, 280 - Centro, Foz do Iguaçu - PR, 85851-340"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c5f",
@@ -89,7 +92,8 @@
       "type": "Point",
       "coordinates": [139.710045, 35.68518],
       "address": "11 Naitomachi, Shinjuku City, Tokyo 160-0014, Japan"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c60",
@@ -112,7 +116,8 @@
       "type": "Point",
       "coordinates": [88.8708942970115, 29.266805506306902],
       "address": "7 Jijilangka Rd, Sang Zhu Zi Qu, Shigatse, Tibet, China, 857003"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c61",
@@ -135,7 +140,8 @@
       "type": "Point",
       "coordinates": [127.363796, 61.106903],
       "address": "Sakha Republic, Rússia, 678024"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c62",
@@ -158,7 +164,8 @@
       "type": "Point",
       "coordinates": [-38.112692732134605, -4.154146493081497],
       "address": "Av. Luís Gama, 323 - Morro Branco, Beberibe - CE, 62840-000"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c63",
@@ -181,7 +188,8 @@
       "type": "Point",
       "coordinates": [138.801377, 35.501261],
       "address": "2-chome-4-1 Asama, Fujiyoshida, Yamanashi 403-0011, Japan"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c64",
@@ -204,7 +212,8 @@
       "type": "Point",
       "coordinates": [85.36235255847677, 27.723696564812332],
       "address": "Buddha Stupa, Boudha Sadak, Kathmandu 44600, Nepal"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c65",
@@ -227,7 +236,8 @@
       "type": "Point",
       "coordinates": [30.332283020280972, 60.65390709902382],
       "address": "Nevsky Ave, 40-42, St Petersburg, Rússia, 191186"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c66",
@@ -250,7 +260,8 @@
       "type": "Point",
       "coordinates": [-34.99969068693411, -8.48447585203105],
       "address": "N. São do Ó, Ipojuca - PE"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c67",
@@ -273,7 +284,8 @@
       "type": "Point",
       "coordinates": [136.843407, 35.216586],
       "address": "Shiroyashiki-1-1 Asahi, Kiyosu, Aichi 452-0932, Japan"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c68",
@@ -296,7 +308,8 @@
       "type": "Point",
       "coordinates": [85.30622313929946, 27.704387164681464],
       "address": "P834+MFX, Kathmandu 44600, Nepal"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c69",
@@ -319,7 +332,8 @@
       "type": "Point",
       "coordinates": [160.64141495193948, 56.05775244955167],
       "address": "Krai de Kamtchatka, Rússia, 684400"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c6a",
@@ -342,7 +356,8 @@
       "type": "Point",
       "coordinates": [-43.17919287413763, -22.915035349314948],
       "address": "R. Manuel Carneiro - Santa Teresa, Rio de Janeiro - RJ, 20241-120"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c6b",
@@ -365,7 +380,8 @@
       "type": "Point",
       "coordinates": [136.703265, 34.487175],
       "address": "279 Toyokawacho, Ise, Mie 516-0042, Japan"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c6c",
@@ -388,7 +404,8 @@
       "type": "Point",
       "coordinates": [85.30751298933012, 27.70577110483091],
       "address": "P834+MXP, Layaku Marg, Kathmandu 44600, Nepal"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c6d",
@@ -411,7 +428,8 @@
       "type": "Point",
       "coordinates": [160.64141495193948, 56.05775244955167],
       "address": "Krai de Kamtchatka, Rússia, 684400"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c6e",
@@ -434,7 +452,8 @@
       "type": "Point",
       "coordinates": [-43.128063, -2.485594],
       "address": "Barreirinhas - MA, 65590-000"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   },
   {
     "_id": "63c6a2729f4fe6fa036e9c6f",
@@ -457,6 +476,7 @@
       "type": "Point",
       "coordinates": [135.890166, 33.668663],
       "address": "1 Nachisan, Nachikatsuura, Higashimuro District, Wakayama 649-5301, Japan"
-    }
+    },
+    "timetable": ["6 AM", "7 AM", "3 PM", "4 PM", "9 PM", "10 PM"]
   }
 ]

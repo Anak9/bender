@@ -1,5 +1,5 @@
 {
-  "name": "classbend",
+  "name": "bender",
   "version": "1.0.0",
   "description": "my first NodeJS solo project!",
   "main": "app.js",
@@ -32,6 +32,7 @@
     "pug": "^3.0.2",
     "sharp": "^0.31.3",
     "slugify": "^1.6.5",
+    "stripe": "^11.13.0",
     "validator": "^13.7.0"
   },
   "devDependencies": {

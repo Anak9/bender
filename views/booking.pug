@@ -1,0 +1,52 @@
+extends base
+
+block header
+    header.booking__header
+        a(href='/')
+            img.booking__img(src='/img/logo-black.png' alt='bender symbol logo')
+        h3 Choose date and time
+
+block content
+    main.booking(class=`${bending}`)
+        div
+            h3 Select a day
+            .calendar 
+                .month
+                    button#previous__month: span.material-symbols-outlined arrow_back
+                    h4#month__label #{month.toUpperCase()} / #{year}
+                    button#next__month: span.material-symbols-outlined arrow_forward
+                .calendar__header
+                    each day in ['SUN' , 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+                        .header-day= day 
+                
+
+                .week__container
+                    - let i = 0
+                    each week in [1,2,3,4,5]
+                        .week
+                            each day in [1,2,3,4,5,6,7]
+                                label
+                                    input.booking-day(type='radio' name='day' value=`${days[i]}`)
+                                    .day
+                                        span= `${days[i].getDate()}`
+                                        - i++
+
+        div
+            h3 Select the time
+            .timetable 
+                each hour in timetable
+                    label
+                        input.booking-hour(type='radio' name='hour' value=`${hour}`)
+                        .hour
+                            span= hour
+
+
+        div
+            h3 Book for 
+            .confirm__booking__container
+                label#day__picked__label _____
+                span AT
+                label#hour__picked__label _____
+                span FOR
+                label#booking-price $#{price},00
+                button.btn#booking__btn(data-teacher-id=`${teacherId}`) Book !
