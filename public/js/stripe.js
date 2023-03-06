@@ -8,14 +8,12 @@ const stripe = Stripe(
 export const bookClass = async (teacherId, date, time) => {
   try {
     const session = await axios(
-      `http://127.0.0.1:3000/api/v1/bookings/checkout-session/${teacherId}/date/${date}/time/${time}`
+      `/api/v1/bookings/checkout-session/${teacherId}/date/${date}/time/${time}`
     );
 
     await stripe.redirectToCheckout({
       sessionId: session.data.session.id,
     });
-
-    console.log(session);
   } catch (err) {
     console.log(err);
     // add error msg here //

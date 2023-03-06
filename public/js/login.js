@@ -52,7 +52,6 @@ export const signup = async (fields) => {
     });
 
     if (result.data.status === 'success') {
-      console.log(result);
       window.location.assign('/');
     }
   } catch (err) {
