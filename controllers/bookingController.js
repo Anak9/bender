@@ -56,6 +56,16 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   });
 });
 
+// STRIPE*
 // const createBooking = (req, res, next) => {
 
 // }
+
+/**
+ * STRIPE*
+ *
+ * on stripe web page we can create a webhook. For that we need to give an address (url) (so only do this after deploying
+ * the app cause needs a real domain)
+ * after a successfull checkout session is completed, stripe will send a POST request to the given url with the info
+ * about the checkout session
+ */

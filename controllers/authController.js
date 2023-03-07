@@ -11,16 +11,14 @@ const createToken = (id) =>
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
 
-const createAndSendToken = (user, res, statusCode) => {
+const createAndSendToken = (user, req, res, statusCode) => {
   const token = createToken(user.id);
 
   const cookieOptions = {
     maxAge: process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000,
-    httpOnly: true, // cookie cant be modified by the browser,
+    httpOnly: true, // cookie cant be modified by the browser
+    secure: req.secure, // cookie can only be sent in a encrypted connection (https)
   };
-
-  // cookie can only be sent in a encrypted connection (https)
-  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
 
   res.cookie('jwt', token, cookieOptions);
 
@@ -49,7 +47,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 
   const newUser = await User.create(userObj);
 
-  createAndSendToken(newUser, res, 201);
+  createAndSendToken(newUser, req, res, 201);
 });
 
 exports.login = catchAsync(async (req, res, next) => {
@@ -65,7 +63,7 @@ exports.login = catchAsync(async (req, res, next) => {
     return next(new AppError('Invalid email or password', 401));
 
   // send jwt token to client
-  createAndSendToken(user, res, 200);
+  createAndSendToken(user, req, res, 200);
 });
 
 // reset json web token cookie
@@ -211,7 +209,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   await user.save();
 
   // Log user in
-  createAndSendToken(user, res, 200);
+  createAndSendToken(user, req, res, 200);
 });
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
@@ -231,5 +229,5 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   await user.save();
 
   // 4) Log the user in - send JWT
-  createAndSendToken(req.user, res, 200);
+  createAndSendToken(req.user, req, res, 200);
 });

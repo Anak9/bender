@@ -3,6 +3,10 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const morgan = require('morgan');
 const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+const hpp = require('hpp');
 const compression = require('compression');
 
 const teacherRouter = require('./routes/teacherRoutes');
@@ -57,10 +61,36 @@ app.use(
   })
 );
 
-app.use(compression());
+const limiter = rateLimit({
+  max: 100, // allows 100 request per hour for each IP address
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many requests from this IP, please try again in a hour',
+});
 
-// http
-//
+app.use('/api', limiter);
+
+// Data sanitization against NoSQL query injections *
+app.use(mongoSanitize());
+
+// Data sanitization against XSS (cross-site scripting) attacks
+app.use(xss());
+
+// Prevent parameter polution
+app.use(
+  hpp({
+    whitelist: [
+      'modality',
+      'ratingsAverage',
+      'ratingsQuantity',
+      'groupSize',
+      'groupClasses',
+      'type',
+      'price',
+    ],
+  })
+);
+
+app.use(compression());
 
 // routes mouting middleware
 app.use('/', viewRouter);
