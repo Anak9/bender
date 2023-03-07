@@ -1,6 +1,6 @@
-# Built using NodeJ, Express, mongoDB and mongoose
+## Built using NodeJ, Express, mongoDB and mongoose
 
-## To run the application, first edit the config.env file then execute the following commands in sequence
+To run the application, first edit the config.env file then execute the following commands in sequence
 
 ```Javascript
 1. npm install
