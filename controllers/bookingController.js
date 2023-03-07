@@ -3,6 +3,7 @@ const Booking = require('../models/bookingModel');
 const factory = require('./handlerFactory');
 const catchAsync = require('../utils/catchAsync');
 const Teacher = require('../models/teacherModel');
+const User = require('../models/userModel');
 
 exports.createBooking = factory.createOne(Booking);
 exports.updateBooking = factory.updateOne(Booking);
@@ -25,9 +26,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   // Create Session
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
-    success_url: `${req.protocol}://${req.get('host')}/?teacher=${
-      req.params.teacherId
-    }&user=${req.user.id}&price=${teacher.price}`,
+    success_url: `${req.protocol}://${req.get('host')}/my-classes`,
     cancel_url: `${req.protocol}://${req.get('host')}/teacher/${teacher.slug}`,
     customer_email: req.user.email,
     client_reference_id: req.params.teacherId,
@@ -47,6 +46,10 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
       },
     ],
     mode: 'payment',
+    metadata: {
+      date,
+      time: req.params.time,
+    },
   });
 
   // send session as response
@@ -56,10 +59,40 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   });
 });
 
-// STRIPE*
-// const createBooking = (req, res, next) => {
+const createBooking = async (session) => {
+  const user = await User.findOne({ email: session.customer_email });
 
-// }
+  const bookingObj = {
+    teacher: session.client_reference_id,
+    user,
+    price: session.line_items[0].price_data.unit_amount / 100,
+    date: session.metadata.date,
+    time: session.metadata.time,
+  };
+  const booking = await Booking.create(bookingObj);
+};
+
+// STRIPE*
+exports.webhookCheckout = (req, res, next) => {
+  const signature = req.headers['stripe-signature'];
+
+  let event;
+
+  try {
+    event = stripe.webhooks.contructEvent(
+      req.body,
+      signature,
+      process.env.STRIPE_WEBHOOK_SECRET
+    );
+  } catch (err) {
+    return res.status(400).send(`Webhook error: ${err.message}`); // stripe will receive this error
+  }
+
+  if (event.type === 'checkout.session.completed')
+    createBooking(event.data.object);
+
+  res.status(200).json({ received: true });
+};
 
 /**
  * STRIPE*

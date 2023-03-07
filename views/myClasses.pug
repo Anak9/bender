@@ -1,0 +1,39 @@
+extends base
+
+include _ratingStars
+
+block content 
+    main
+        .classes-cards-container.index-container(class=`${user.bending}`)
+                
+            if !bookings
+                h1 You dont have bookings yet
+
+            else     
+                .teachers-cards
+                    
+                    each booking in bookings
+                    
+                        .class-card.index-card
+                            div
+                                img(src=`../img/teachers/${booking.teacher.photo}` alt=`Photo of ${booking.teacher.name}`)
+
+                            .class-card-presentation
+                                h6= booking.teacher.name
+
+                                span 
+                                    span= `${booking.teacher.type.charAt(0).toUpperCase() + booking.teacher.type.slice(1)} bending teacher`
+                                    span.material-symbols-outlined= (booking.teacher.special ? icons[booking.teacher.bending][1] : icons[booking.teacher.bending][0]) 
+                                                    
+                                p= booking.teacher.presentation
+
+                            .class-card-info
+                                h6= `$${booking.teacher.price}/h`
+                                .rating
+                                    .rating-stars
+                                        +stars(booking.teacher.ratingsAverage)
+                                
+                                    //- span.rating-average= `${booking.teacher.ratingsAverage.toString().padEnd(3, '.0')}`
+
+                                a(href=`/teacher/${booking.teacher.slug}`) 
+                                    button.btn Book a class

@@ -15,15 +15,12 @@ const reviewRouter = require('./routes/reviewRoutes');
 const viewRouter = require('./routes/viewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
 
+const bookingController = require('./controllers/bookingController');
+
 const ErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/AppError');
 
 const app = express();
-
-// PARSE
-app.use(express.urlencoded({ limit: '10kb', extended: true }));
-app.use(express.json({ limit: '10kb' }));
-app.use(cookieParser());
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -68,6 +65,18 @@ const limiter = rateLimit({
 });
 
 app.use('/api', limiter);
+
+// gets req.body in raw format, not json
+app.post(
+  'webhook-checkout',
+  express.raw({ type: 'application/json' }),
+  bookingController.webhookCheckout
+);
+
+// PARSE
+app.use(express.urlencoded({ limit: '10kb', extended: true }));
+app.use(express.json({ limit: '10kb' }));
+app.use(cookieParser());
 
 // Data sanitization against NoSQL query injections *
 app.use(mongoSanitize());
