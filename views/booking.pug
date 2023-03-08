@@ -43,23 +43,23 @@ block content
             h3.modality__header Modality
             .booking__modality 
                 label.modality__label 
-                    input.booking__modality__input(type='radio' name='modality' value='onsite') 
+                    input.booking__modality__input.online__onsite(type='radio' name='modality' value='onsite') 
                     .modality
                             span Onsite
                 
                 label.modality__label 
-                    input.booking__modality__input(type='radio' name='modality' value='online' checked)
+                    input.booking__modality__input.online__onsite(type='radio' name='modality' value='online' checked)
                     .modality
                         span Online
             
             .booking__modality 
                 label.modality__label 
-                    input.booking__modality__input(type='radio' name='group' value='private') 
+                    input.booking__modality__input.private__group(type='radio' name='group' value='private') 
                     .modality
                             span Private Class
                 
                 label.modality__label 
-                    input.booking__modality__input(type='radio' name='group' value='group')
+                    input.booking__modality__input.private__group(type='radio' name='group' value='group')
                     .modality
                         span Group Class
 

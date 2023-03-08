@@ -63,6 +63,17 @@ const updateMonth = (monthLabel, currentMonth, currentYear) => {
   setClasses();
 };
 
+const showCreditCardNumber = () => {
+  const card = document.createElement('div');
+
+  card.innerHTML = `
+    <h3> COPY and use this fake credit card number in the next page ;)</h3>
+    <h4> 4242 4242 4242 4242</h4>
+  `;
+
+  container.insertBefore(card, container.firstChild.nextSibling);
+};
+
 export const initBookingsEvents = () => {
   // SET CALENDAR VALUES
   const today = new Date();
@@ -109,17 +120,13 @@ export const initBookingsEvents = () => {
     const hour = document.querySelector('.booking-hour:checked').value;
     const teacherId = document.getElementById('booking__btn').dataset.teacherId;
 
-    // const modality = 'onsite';
-    // const groupClass = true;
+    const modality = document.querySelectorAll('.online__onsite:checked');
+    const group = document.querySelectorAll('.private__group:checked');
 
-    const mod = document.querySelectorAll('.booking__modality__input:checked');
+    // showCreditCardNumber();
 
-    bookClass(
-      teacherId,
-      day.replaceAll('/', '-'),
-      hour,
-      mod[0].value,
-      mod[1].value
-    );
+    setInterval(() => {
+      bookClass(teacherId, day.replaceAll('/', '-'), hour, modality, group);
+    }, 6000);
   });
 };

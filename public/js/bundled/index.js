@@ -5463,6 +5463,11 @@ var updateMonth = function(monthLabel, currentMonth, currentYear) {
     createMonth(currentYear, currentMonth);
     setClasses();
 };
+var showCreditCardNumber = function() {
+    var card = document.createElement("div");
+    card.innerHTML = "\n    <h3> COPY and use this fake credit card number in the next page ;)</h3>\n    <h4> 4242 4242 4242 4242</h4>\n  ";
+    container.insertBefore(card, container.firstChild.nextSibling);
+};
 var initBookingsEvents = function() {
     // SET CALENDAR VALUES
     var today = new Date();
@@ -5496,10 +5501,12 @@ var initBookingsEvents = function() {
         day.replace("/", "-");
         var hour = document.querySelector(".booking-hour:checked").value;
         var teacherId = document.getElementById("booking__btn").dataset.teacherId;
-        // const modality = 'onsite';
-        // const groupClass = true;
-        var mod = document.querySelectorAll(".booking__modality__input:checked");
-        (0, _stripe.bookClass)(teacherId, day.replaceAll("/", "-"), hour, mod[0].value, mod[1].value);
+        var modality = document.querySelectorAll(".online__onsite:checked");
+        var group = document.querySelectorAll(".private__group:checked");
+        // showCreditCardNumber();
+        setInterval(function() {
+            (0, _stripe.bookClass)(teacherId, day.replaceAll("/", "-"), hour, modality, group);
+        }, 6000);
     });
 };
 
