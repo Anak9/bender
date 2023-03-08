@@ -5496,7 +5496,9 @@ var initBookingsEvents = function() {
         day.replace("/", "-");
         var hour = document.querySelector(".booking-hour:checked").value;
         var teacherId = document.getElementById("booking__btn").dataset.teacherId;
-        (0, _stripe.bookClass)(teacherId, day.replaceAll("/", "-"), hour);
+        var modality = "onsite";
+        var groupClass = true;
+        (0, _stripe.bookClass)(teacherId, day.replaceAll("/", "-"), hour, modality, groupClass);
     });
 };
 
@@ -5541,7 +5543,7 @@ var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _alertMsg = require("./alertMsg");
 var stripe = Stripe("pk_test_51MaJRHIZoKpQ5jrWQN4FQUoATgd2Su33VaOFRPdlk5h2b1Nv5cMGdkSX2BQW88mAU80vjPhDRDUBBIPTQTLLJnMt00EkXJaaz9");
 var bookClass = function() {
-    var _ref = (0, _asyncToGeneratorMjsDefault.default)(function(teacherId, date, time) {
+    var _ref = (0, _asyncToGeneratorMjsDefault.default)(function(teacherId, date, time, modality, groupClass) {
         var session, err;
         return (0, _tsGeneratorMjsDefault.default)(this, function(_state) {
             switch(_state.label){
@@ -5554,7 +5556,7 @@ var bookClass = function() {
                     ]);
                     return [
                         4,
-                        (0, _axiosDefault.default)("/api/v1/bookings/checkout-session/".concat(teacherId, "/date/").concat(date, "/time/").concat(time))
+                        (0, _axiosDefault.default)("/api/v1/bookings/checkout-session/".concat(teacherId, "/date/").concat(date, "/time/").concat(time, "/modality/").concat(modality, "/groupClass/").concat(groupClass))
                     ];
                 case 1:
                     session = _state.sent();
@@ -5584,7 +5586,7 @@ var bookClass = function() {
             }
         });
     });
-    return function bookClass(teacherId, date, time) {
+    return function bookClass(teacherId, date, time, modality, groupClass) {
         return _ref.apply(this, arguments);
     };
 }();
