@@ -121,7 +121,12 @@ block content
         .brief-container
           div
             span.material-symbols-outlined= (teacher.special) ? icons[teacher.bending][1] : icons[teacher.bending][0] 
-            span Learn #[strong #{teacher.bending}] bending 
+            
+            if teacher.type === 'flying' || teacher.type === 'healing'
+              span Learn #[strong #{teacher.type}] 
+            else
+              span Learn #[strong #{teacher.type}] bending 
+                     
          
           div
             span.material-symbols-outlined videocam 

@@ -39,7 +39,29 @@ block content
                         input.booking-hour(type='radio' name='hour' value=`${hour}`)
                         .hour
                             span= hour
-
+                            
+            h3.modality__header Modality
+            .booking__modality 
+                label.modality__label 
+                    input.booking-hour.booking__input(type='radio' name='modality' value='onsite') 
+                    .modality
+                            span Onsite
+                
+                label.modality__label 
+                    input.booking-hour.booking__input(type='radio' name='modality' value='online' disabled)
+                    .modality
+                        span Online
+            
+            .booking__modality 
+                label.modality__label 
+                    input.booking-hour.booking__input(type='radio' name='group' value='private') 
+                    .modality
+                            span Private Class
+                
+                label.modality__label 
+                    input.booking-hour.booking__input(type='radio' name='group' value='group')
+                    .modality
+                        span Group Class
 
         div
             h3 Book for 

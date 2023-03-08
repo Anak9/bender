@@ -26,13 +26,17 @@ block content
                 
                     .class-card.index-card
                         div
-                            img(src=`../img/teachers/${teacher.photo}` alt=`Photo of ${teacher.name}`)
+                            img(src=`/img/teachers/${teacher.photo}` alt=`Photo of ${teacher.name}`)
 
                         .class-card-presentation
                             h6= teacher.name
 
                             span 
-                                span= `${teacher.type.charAt(0).toUpperCase() + teacher.type.slice(1)} bending teacher`
+                                if teacher.type === 'flying' || teacher.type === 'healing'
+                                    span= `${teacher.type.charAt(0).toUpperCase() + teacher.type.slice(1)} teacher`
+                                else
+                                    span= `${teacher.type.charAt(0).toUpperCase() + teacher.type.slice(1)} bending teacher`
+    
                                 span.material-symbols-outlined= (teacher.special ? icons[teacher.bending][1] : icons[teacher.bending][0]) 
                                                 
                             p= teacher.presentation

@@ -32,12 +32,23 @@ const bookingSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+
+  modality: {
+    type: String,
+    enum: ['online', 'onsite'],
+    default: 'online',
+  },
+
+  groupClass: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 bookingSchema.pre(/^find/, function (next) {
   this.populate('user').populate({
     path: 'teacher',
-    select: 'name bending type modality',
+    select: 'name bending type photo classLocation',
   });
   next();
 });

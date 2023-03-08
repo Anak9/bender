@@ -49,6 +49,8 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     metadata: {
       date,
       time: req.params.time,
+      modality: req.params.modality,
+      groupClass: req.params.groupClass,
     },
   });
 
@@ -60,16 +62,19 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 });
 
 const createBooking = async (session) => {
-  const user = await User.findOne({ email: session.customer_email });
+  const { id } = await User.findOne({ email: session.customer_email });
 
   const bookingObj = {
     teacher: session.client_reference_id,
-    user,
+    user: id,
     price: session.line_items[0].price_data.unit_amount / 100,
     date: session.metadata.date,
     time: session.metadata.time,
+    modality: session.metadata.modality,
+    groupClass: session.metadata.groupClass,
   };
-  const booking = await Booking.create(bookingObj);
+
+  await Booking.create(bookingObj);
 };
 
 // STRIPE*

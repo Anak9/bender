@@ -1,6 +1,6 @@
 header.header
     div.header-img-div
-        a(href='/'): img(src='../img/logo-black.png' alt='bender logo' href='/')
+        a(href='/'): img(src='/img/logo-black.png' alt='bender logo' href='/')
     
     div.search-bar
         form
@@ -13,7 +13,7 @@ header.header
 
         if user 
 
-            a(href='#'): button.header-btn.dark-header-btn My classes
+            a(href='/my-classes'): button.header-btn.dark-header-btn My classes
             
             a(href='/me'): img(src=`/img/users/${user.photo}` alt=`photo of ${user.name}`)
 

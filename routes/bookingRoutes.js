@@ -6,20 +6,21 @@ const router = express.Router();
 
 router.use(authController.protect);
 
+// GET checkout session from STRIPE
 router.get(
-  '/checkout-session/:teacherId/date/:date/time/:time',
+  '/checkout-session/:teacherId/date/:date/time/:time/modality/:modality/groupClass/:groupClass',
   bookingController.getCheckoutSession
 );
 
 router
   .route('/')
-  .get(bookingController.getAllBookings)
-  .post(bookingController.createBooking);
+  .get(authController.restrictBookings, bookingController.getAllBookings)
+  .post(authController.restrictTo('admin'), bookingController.createBooking);
 
 router
   .route('/:id')
-  .get(bookingController.getBooking)
-  .patch(bookingController.updateBooking)
-  .delete(bookingController.deleteBooking);
+  .get(authController.restrictBookings, bookingController.getBooking)
+  .patch(authController.restrictBookings, bookingController.updateBooking)
+  .delete(authController.restrictBookings, bookingController.deleteBooking);
 
 module.exports = router;

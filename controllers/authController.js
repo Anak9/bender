@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 const User = require('../models/userModel');
+const Booking = require('../models/bookingModel');
 const AppError = require('../utils/AppError');
 const catchAsync = require('../utils/catchAsync');
 const sendEmail = require('../utils/email');
@@ -230,4 +231,28 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 
   // 4) Log the user in - send JWT
   createAndSendToken(req.user, req, res, 200);
+});
+
+// restric access of non-admin users to their own bookings only
+exports.restrictBookings = catchAsync(async (req, res, next) => {
+  if (req.user.role === 'admin') return next();
+
+  // GET ALL
+  if (req.method === 'GET' && !req.params.id) {
+    req.query.user = req.user.id;
+    return next();
+  }
+
+  // GET ONE, PATCH, DELETE
+  const booking = await Booking.findById(req.params.id);
+
+  if (!booking.user._id.equals(req.user._id)) {
+    return next(
+      new AppError(
+        'Forbidden. You do not have permission to access this resource',
+        403
+      )
+    );
+  }
+  next();
 });

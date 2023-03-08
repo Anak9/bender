@@ -111,6 +111,8 @@ exports.getBooking = catchAsync(async (req, res, next) => {
     days,
     month: today.toLocaleString('en-US', { month: 'long' }),
     year,
+    modality: teacher.modality,
+    groupClass: teacher.groupClasses,
   });
 });
 
