@@ -68,7 +68,7 @@ app.use('/api', limiter);
 
 // gets req.body in raw format, not json
 app.post(
-  'webhook-checkout',
+  '/webhook-checkout',
   express.raw({ type: 'application/json' }),
   bookingController.webhookCheckout
 );
