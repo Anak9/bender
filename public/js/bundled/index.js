@@ -5496,9 +5496,10 @@ var initBookingsEvents = function() {
         day.replace("/", "-");
         var hour = document.querySelector(".booking-hour:checked").value;
         var teacherId = document.getElementById("booking__btn").dataset.teacherId;
-        var modality = "onsite";
-        var groupClass = true;
-        (0, _stripe.bookClass)(teacherId, day.replaceAll("/", "-"), hour, modality, groupClass);
+        // const modality = 'onsite';
+        // const groupClass = true;
+        var mod = document.querySelectorAll(".booking__modality__input:checked");
+        (0, _stripe.bookClass)(teacherId, day.replaceAll("/", "-"), hour, mod[0].value, mod[1].value);
     });
 };
 

@@ -109,9 +109,17 @@ export const initBookingsEvents = () => {
     const hour = document.querySelector('.booking-hour:checked').value;
     const teacherId = document.getElementById('booking__btn').dataset.teacherId;
 
-    const modality = 'onsite';
-    const groupClass = true;
+    // const modality = 'onsite';
+    // const groupClass = true;
 
-    bookClass(teacherId, day.replaceAll('/', '-'), hour, modality, groupClass);
+    const mod = document.querySelectorAll('.booking__modality__input:checked');
+
+    bookClass(
+      teacherId,
+      day.replaceAll('/', '-'),
+      hour,
+      mod[0].value,
+      mod[1].value
+    );
   });
 };
