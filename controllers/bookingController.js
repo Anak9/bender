@@ -88,6 +88,8 @@ exports.webhookCheckout = (req, res, next) => {
 
   let event;
 
+  console.log('got here');
+
   try {
     event = stripe.webhooks.constructEvent(
       req.body,
@@ -97,6 +99,8 @@ exports.webhookCheckout = (req, res, next) => {
   } catch (err) {
     return res.status(400).send(`Webhook error: ${err.message}`); // stripe will receive this error
   }
+
+  console.log(event);
 
   if (event.type === 'checkout.session.completed')
     createBooking(event.data.object);
