@@ -39,6 +39,11 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
           product_data: {
             name: name,
             description: `${name} with ${teacher.name} on ${date} at ${req.params.time}`,
+            images: [
+              `${req.protocol}://${req.get('host')}/img/teachers/${
+                teacher.photo
+              }`,
+            ],
           },
           unit_amount: teacher.price * 100,
         },
@@ -84,7 +89,7 @@ exports.webhookCheckout = (req, res, next) => {
   let event;
 
   try {
-    event = stripe.webhooks.contructEvent(
+    event = stripe.webhooks.constructEvent(
       req.body,
       signature,
       process.env.STRIPE_WEBHOOK_SECRET
