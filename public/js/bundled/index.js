@@ -5502,11 +5502,12 @@ var initBookingsEvents = function() {
         day.replace("/", "-");
         var hour = document.querySelector(".booking-hour:checked").value;
         var teacherId = document.getElementById("booking__btn").dataset.teacherId;
-        var modality = document.querySelectorAll(".online__onsite:checked");
-        var group = document.querySelectorAll(".private__group:checked");
+        var modality = document.querySelector(".online__onsite:checked").value;
+        var group = document.querySelector(".private__group:checked").value === "true";
         showCreditCardNumber();
-        setInterval(function() {
-            (0, _stripe.bookClass)(teacherId, day.replaceAll("/", "-"), hour, modality, group);
+        setTimeout(function() {
+            // bookClass(teacherId, day.replaceAll('/', '-'), hour, modality, group);
+            console.log(teacherId, day.replaceAll("/", "-"), hour, modality, group);
         }, 6000);
     });
 };

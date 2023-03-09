@@ -69,18 +69,6 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 const createBooking = catchAsync(async (session) => {
   const { id } = await User.findOne({ email: session.customer_email });
 
-  console.log(session);
-
-  // const bookingObj = {
-  //   teacher: session.client_reference_id,
-  //   user: id,
-  //   price: session.line_items[0].price_data.unit_amount / 100,
-  //   date: session.metadata.date,
-  //   time: session.metadata.time,
-  //   modality: session.metadata.modality,
-  //   groupClass: session.metadata.groupClass,
-  // };
-
   const bookingObj = {
     teacher: session.client_reference_id,
     user: id,
@@ -91,6 +79,10 @@ const createBooking = catchAsync(async (session) => {
     groupClass: session.metadata.groupClass,
   };
 
+  // UNHANDLED REJECTION! Shutting down...
+  // Mar 8 09:23:16 PM  ValidationError Booking validation failed: groupClass: Cast to Boolean failed for value "[object NodeList]" (type string) at path "groupClass" because of "CastError", modality: `[object NodeList]` is not a valid enum value for path `modality`.
+  // Mar 8 09:23:19 PM  [
+
   await Booking.create(bookingObj);
 });
 
@@ -99,8 +91,6 @@ exports.webhookCheckout = (req, res, next) => {
   const signature = req.headers['stripe-signature'];
 
   let event;
-
-  console.log('got here');
 
   try {
     event = stripe.webhooks.constructEvent(
@@ -111,8 +101,6 @@ exports.webhookCheckout = (req, res, next) => {
   } catch (err) {
     return res.status(400).send(`Webhook error: ${err.message}`); // stripe will receive this error
   }
-
-  console.log(event);
 
   if (event.type === 'checkout.session.completed')
     createBooking(event.data.object);
