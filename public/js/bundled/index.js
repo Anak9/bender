@@ -171,9 +171,11 @@ if (signupForm) {
         (0, _login.signup)(fields);
     });
     // add styles
-    var body = document.querySelector("body");
     document.querySelector(".bending").addEventListener("click", function(e) {
-        if (e.target.value) body.className = e.target.value;
+        if (e.target.value) {
+            document.querySelector("body").className = e.target.value;
+            document.querySelector("main").className = "".concat(e.target.value, " login-signup-main");
+        }
     });
 }
 // LOGOUT
@@ -5502,12 +5504,12 @@ var initBookingsEvents = function() {
         day.replace("/", "-");
         var hour = document.querySelector(".booking-hour:checked").value;
         var teacherId = document.getElementById("booking__btn").dataset.teacherId;
-        var modality = document.querySelector(".online__onsite:checked").value;
-        var group = document.querySelector(".private__group:checked").value === "true";
+        var modality = document.querySelector(".onsite:checked").value;
+        var group = document.querySelector(".group:checked").value === "true";
         showCreditCardNumber();
+        console.log(teacherId, day.replaceAll("/", "-"), hour, modality, group);
         setTimeout(function() {
-            (0, _stripe.bookClass)(teacherId, day.replaceAll("/", "-"), hour, modality, group);
-        // console.log(teacherId, day.replaceAll('/', '-'), hour, modality, group);
+        // bookClass(teacherId, day.replaceAll('/', '-'), hour, modality, group);
         }, 6000);
     });
 };

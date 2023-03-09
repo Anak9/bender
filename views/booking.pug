@@ -1,5 +1,32 @@
 extends base
 
+mixin modality(modality, onsiteDis=true, onlineDis=true)
+
+    - onsiteDis = modality === 'online' ? true : false;
+    - onlineDis = modality === 'onsite' ? true : false;
+
+    label.modality__label(class=`${onsiteDis?'disabled':''}`)
+        input.book__input.onsite(disabled=onsiteDis checked=onlineDis type='radio' name='modality' value='onsite' ) 
+        .modality
+            span Onsite
+                
+    label.modality__label(class=`${onlineDis?'disabled':''}`)
+        input.book__input.onsite(disabled=onlineDis checked=onsiteDis type='radio' name='modality' value='online')
+        .modality
+            span Online
+
+mixin groupClass(groupClass, groupDis=true, privateDis=true)
+
+    label.modality__label
+        input.book__input.group(checked=(!groupClass) type='radio' name='group' value='false') 
+        .modality
+            span Private Class
+    
+    label.modality__label(class=`${(!groupClass)?'disabled':''}`)
+        input.book__input.group(disabled=(!groupClass) type='radio' name='group' value='true')
+        .modality
+            span Group Class
+
 block header
     header.booking__header
         a(href='/')
@@ -7,7 +34,7 @@ block header
         h3 Choose date and time
 
 block content
-    main.booking(class=`${bending}`)
+    main.booking(class=`${teacher.bending}`)
         div
             h3 Select a day
             .calendar 
@@ -34,7 +61,7 @@ block content
         div
             h3 Select the time
             .timetable 
-                each hour in timetable
+                each hour in teacher.timetable
                     label
                         input.booking-hour(type='radio' name='hour' value=`${hour}`)
                         .hour
@@ -42,26 +69,10 @@ block content
                             
             h3.modality__header Modality
             .booking__modality 
-                label.modality__label 
-                    input.booking__modality__input.online__onsite(type='radio' name='modality' value='onsite') 
-                    .modality
-                            span Onsite
-                
-                label.modality__label 
-                    input.booking__modality__input.online__onsite(type='radio' name='modality' value='online' checked)
-                    .modality
-                        span Online
+                +modality(teacher.modality)
             
             .booking__modality 
-                label.modality__label 
-                    input.booking__modality__input.private__group(type='radio' name='group' value='false') 
-                    .modality
-                            span Private Class
-                
-                label.modality__label 
-                    input.booking__modality__input.private__group(type='radio' name='group' value='true')
-                    .modality
-                        span Group Class
+                +groupClass(teacher.groupClass)
 
         div
             h3 Book for 
@@ -70,5 +81,5 @@ block content
                 span AT
                 label#hour__picked__label _____
                 span FOR
-                label#booking-price $#{price},00
-                button.btn#booking__btn(data-teacher-id=`${teacherId}`) Book !
+                label#booking-price $#{teacher.price},00
+                button.btn#booking__btn(data-teacher-id=`${teacher.teacherId}`) Book !

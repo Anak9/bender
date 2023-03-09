@@ -124,15 +124,14 @@ export const initBookingsEvents = () => {
     const hour = document.querySelector('.booking-hour:checked').value;
     const teacherId = document.getElementById('booking__btn').dataset.teacherId;
 
-    const modality = document.querySelector('.online__onsite:checked').value;
-    const group =
-      document.querySelector('.private__group:checked').value === 'true';
+    const modality = document.querySelector('.onsite:checked').value;
+    const group = document.querySelector('.group:checked').value === 'true';
 
     showCreditCardNumber();
 
+    console.log(teacherId, day.replaceAll('/', '-'), hour, modality, group);
     setTimeout(() => {
-      bookClass(teacherId, day.replaceAll('/', '-'), hour, modality, group);
-      // console.log(teacherId, day.replaceAll('/', '-'), hour, modality, group);
+      // bookClass(teacherId, day.replaceAll('/', '-'), hour, modality, group);
     }, 6000);
   });
 };

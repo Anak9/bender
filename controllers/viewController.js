@@ -102,17 +102,23 @@ exports.getBooking = catchAsync(async (req, res, next) => {
 
   const teacher = await Teacher.findById(req.params.teacherId);
 
-  res.status(200).render('booking', {
-    title: 'Booking',
+  const teacherInfo = {
     bending: teacher.bending,
     price: teacher.price,
     teacherId: teacher.id,
     timetable: teacher.timetable,
+    modality: teacher.modality,
+    groupClass: teacher.groupClasses,
+  };
+
+  console.log(teacher.modality);
+
+  res.status(200).render('booking', {
+    title: 'Booking',
+    teacher: teacherInfo,
     days,
     month: today.toLocaleString('en-US', { month: 'long' }),
     year,
-    modality: teacher.modality,
-    groupClass: teacher.groupClasses,
   });
 });
 

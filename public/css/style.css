@@ -937,47 +937,6 @@ li {
   color: #fff
 }
 
-/* .form-container {
-  background-color: #fff;
-    border-bottom-right-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-    box-shadow: 0.125rem 0.125rem 0.125rem 0.125rem #d1cfcf;
-    padding: 2.2rem 6rem;
-    width: 50%;
-}
-
-.form-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  margin-bottom: 4.063rem;
-}
-
-.form-container form label {
-  display: block;
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  color: #777777
-}
-
-.form-container h6 {
-  font-size: x-large;
-  color: var(--primary-color);
-}
-
-.form-container button{
-  width: 9rem;
-  height: 2.4rem;
-  border-radius: 0.6rem;
-  border-color: var(--button-color, #24292f); 
-  color: #fff;
-  font-size: 0.95rem;
-  background-color: var(--button-color, #24292f); 
-  position: relative;
-  margin: 1rem 0 3.5rem;
-} */
-
 .form-container {
   background-color: #fff;
   box-sizing: border-box;
@@ -1426,7 +1385,7 @@ input[type='radio'] {
 }
 
 .hour:hover, .week input, .week .available__day:hover, .modality:hover,
-.booking__modality__input:hover, .booking__modality__input:active, .modality__label:hover, .modality__label:active, .booking__modality__input:checked {
+.book__input:hover, .book__input:active, .modality__label:hover, .modality__label:active, .book__input:checked {
   cursor: pointer;
   background-color: var(--secondary-color);
   color: #fff;
@@ -1448,9 +1407,8 @@ input[type='radio'] {
   border-radius: 8px;
 }
 
-.booking__modality__input {
+.book__input {
   position: absolute;
-    /* left: revert; */
     right: 41rem;
 }
 
@@ -1546,6 +1504,10 @@ input[type='radio'] {
 .credit-card h4 {
   font-size: 1.5rem;
   margin-top: 2rem;
+}
+
+.disabled {
+  background-color: #e1e1e18c;
 }
 
 /*

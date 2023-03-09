@@ -34,10 +34,12 @@ if (signupForm) {
   });
 
   // add styles
-  const body = document.querySelector('body');
   document.querySelector('.bending').addEventListener('click', (e) => {
     if (e.target.value) {
-      body.className = e.target.value;
+      document.querySelector('body').className = e.target.value;
+      document.querySelector(
+        'main'
+      ).className = `${e.target.value} login-signup-main`;
     }
   });
 }
