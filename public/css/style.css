@@ -1531,6 +1531,23 @@ input[type='radio'] {
   margin: 3rem 0 1rem;
 }
 
+.credit-card {
+  background-color: #fff;
+  padding: 3rem;
+  position: absolute;
+  top: 7rem;
+  left: 24rem;
+  border: 1px solid #949494;
+  box-shadow: 1px 1px 1px 1px #949494;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.credit-card h4 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
 /*
  * FOOTER
  */

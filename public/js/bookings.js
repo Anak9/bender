@@ -71,7 +71,11 @@ const showCreditCardNumber = () => {
     <h4> 4242 4242 4242 4242</h4>
   `;
 
-  container.insertBefore(card, container.firstChild.nextSibling);
+  card.classList = 'credit-card';
+
+  document
+    .querySelector('body')
+    .insertBefore(card, document.querySelector('body').firstChild.nextSibling);
 };
 
 export const initBookingsEvents = () => {
@@ -123,7 +127,7 @@ export const initBookingsEvents = () => {
     const modality = document.querySelectorAll('.online__onsite:checked');
     const group = document.querySelectorAll('.private__group:checked');
 
-    // showCreditCardNumber();
+    showCreditCardNumber();
 
     setInterval(() => {
       bookClass(teacherId, day.replaceAll('/', '-'), hour, modality, group);

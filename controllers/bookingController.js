@@ -66,7 +66,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   });
 });
 
-const createBooking = async (session) => {
+const createBooking = catchAsync(async (session) => {
   const { id } = await User.findOne({ email: session.customer_email });
 
   const bookingObj = {
@@ -80,7 +80,7 @@ const createBooking = async (session) => {
   };
 
   await Booking.create(bookingObj);
-};
+});
 
 // STRIPE*
 exports.webhookCheckout = (req, res, next) => {
