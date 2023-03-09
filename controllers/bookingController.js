@@ -71,10 +71,20 @@ const createBooking = catchAsync(async (session) => {
 
   console.log(session);
 
+  // const bookingObj = {
+  //   teacher: session.client_reference_id,
+  //   user: id,
+  //   price: session.line_items[0].price_data.unit_amount / 100,
+  //   date: session.metadata.date,
+  //   time: session.metadata.time,
+  //   modality: session.metadata.modality,
+  //   groupClass: session.metadata.groupClass,
+  // };
+
   const bookingObj = {
     teacher: session.client_reference_id,
     user: id,
-    price: session.line_items[0].price_data.unit_amount / 100,
+    price: session.amount_total / 100,
     date: session.metadata.date,
     time: session.metadata.time,
     modality: session.metadata.modality,
