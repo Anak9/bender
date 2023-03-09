@@ -5506,8 +5506,8 @@ var initBookingsEvents = function() {
         var group = document.querySelector(".private__group:checked").value === "true";
         showCreditCardNumber();
         setTimeout(function() {
-            // bookClass(teacherId, day.replaceAll('/', '-'), hour, modality, group);
-            console.log(teacherId, day.replaceAll("/", "-"), hour, modality, group);
+            (0, _stripe.bookClass)(teacherId, day.replaceAll("/", "-"), hour, modality, group);
+        // console.log(teacherId, day.replaceAll('/', '-'), hour, modality, group);
         }, 6000);
     });
 };
