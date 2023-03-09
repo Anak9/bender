@@ -69,6 +69,8 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 const createBooking = catchAsync(async (session) => {
   const { id } = await User.findOne({ email: session.customer_email });
 
+  console.log(session);
+
   const bookingObj = {
     teacher: session.client_reference_id,
     user: id,
