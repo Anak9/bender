@@ -392,6 +392,13 @@ li {
   font-size: 1.1rem;
 }
 
+.no__bookings {
+  background-color: #fff;
+  width: 60rem;
+  text-align: center;
+  padding: 3rem 5rem 19rem;
+}
+
 .my__classes__card {
   font-size: 1.1rem;
   margin-right: 0.5rem;

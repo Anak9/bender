@@ -111,8 +111,6 @@ exports.getBooking = catchAsync(async (req, res, next) => {
     groupClass: teacher.groupClasses,
   };
 
-  console.log(teacher.modality);
-
   res.status(200).render('booking', {
     title: 'Booking',
     teacher: teacherInfo,
@@ -125,11 +123,12 @@ exports.getBooking = catchAsync(async (req, res, next) => {
 exports.getMyClasses = catchAsync(async (req, res, next) => {
   const bookings = await Booking.find({ user: req.user.id });
 
-  console.log(bookings);
+  let noBookings = false;
+  if (bookings.length === 0) noBookings = true;
 
   res.status(200).render('myClasses', {
     title: 'My Classes',
     bookings,
-    teacher: bookings.teacher,
+    noBookings,
   });
 });

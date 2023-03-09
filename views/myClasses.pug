@@ -6,8 +6,9 @@ block content
     main
         .classes-cards-container.index-container(class=`${user.bending}`)
                 
-            if !bookings
-                h1 You dont have bookings yet
+            if noBookings
+                .no__bookings
+                    h1 You do not have any classes booked.
 
             else     
                 .teachers-cards

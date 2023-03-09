@@ -129,9 +129,8 @@ export const initBookingsEvents = () => {
 
     showCreditCardNumber();
 
-    console.log(teacherId, day.replaceAll('/', '-'), hour, modality, group);
     setTimeout(() => {
-      // bookClass(teacherId, day.replaceAll('/', '-'), hour, modality, group);
-    }, 6000);
+      bookClass(teacherId, day.replaceAll('/', '-'), hour, modality, group);
+    }, 5000);
   });
 };
