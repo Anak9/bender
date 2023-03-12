@@ -1517,6 +1517,64 @@ input[type='radio'] {
   background-color: #e1e1e18c;
 }
 
+
+/**
+ * API
+ */
+
+ .api__main {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+ }
+
+.api__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem 2.7rem;
+  background-color: #1b1f23;
+  color: white;
+}
+
+.api__sidebar a {
+  color: #79b8ff;
+}
+
+.sidebar__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.api__info {
+
+}
+
+.api__container {
+  display: flex;
+}
+
+.api__main .logo {
+  margin-left: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
  * FOOTER
  */

@@ -1,0 +1,47 @@
+extends base
+
+block header
+
+block content 
+
+  main.neutral.api__main
+    div
+      a(href='/')
+        .logo
+          img(src='/img/logo.png' alt='bender logo')
+    
+    .api__container
+        sidebar.api__sidebar
+            .sidebar__links
+                span Teachers
+                a(href='') Get All
+                a(href='')
+                a(href='') Update
+                a(href='') Delete
+            
+            .sidebar__links
+                span Users
+                a(href='') Get All
+                a(href='')
+                a(href='') Update
+                a(href='') Delete
+            
+            .sidebar__links
+                span Reviews
+                a(href='') Get All
+                a(href='')
+                a(href='') Update
+                a(href='') Delete
+            .sidebar__links
+                span Bookings
+                a(href='') Get All
+                a(href='')
+                a(href='') Update
+                a(href='') Delete
+
+    .api__info
+        h3 GET teachers
+
+        Parameters
+
+        input(type='text', name='')

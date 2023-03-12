@@ -14,6 +14,7 @@ router.get('/login', viewController.getLoginForm);
 router.get('/signup', viewController.getSignupForm);
 router.get('/me', authController.protect, viewController.getMyAccountPage);
 router.get('/my-classes', authController.protect, viewController.getMyClasses);
+// router.get('/apiPage', viewController.getApiPage);
 router.get(
   '/booking/:teacherId',
   authController.protect,

@@ -132,3 +132,9 @@ exports.getMyClasses = catchAsync(async (req, res, next) => {
     noBookings,
   });
 });
+
+// exports.getApiPage = (req, res) => {
+//   res.status(200).render('api', {
+//     title: 'API',
+//   });
+// };
